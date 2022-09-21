@@ -5,7 +5,7 @@ import NewExpense from "./components/NewExpense/NewExpense";
 const DUMMY_EXPENSES = [
   {
     id: 1,
-    title: "Medicine",
+    title: "Desk",
     amount: "200",
     date: new Date(2022, 3, 27),
   },
@@ -17,13 +17,13 @@ const DUMMY_EXPENSES = [
   },
   {
     id: 3,
-    title: "Mediclaim",
+    title: "Medicine",
     amount: "200",
     date: new Date(2020, 3, 27),
   },
   {
     id: 4,
-    title: "Mediclaim",
+    title: "Gold",
     amount: "200",
     date: new Date(2022, 3, 27),
   },
