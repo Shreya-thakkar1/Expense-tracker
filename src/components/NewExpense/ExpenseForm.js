@@ -2,51 +2,47 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpeseForm = () => {
-  //using one state approach
-  const [userInput, setUserInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
+  //Handle multiple state
+
+  const [enteredTitle, setEnteredTitle] = useState("");
+  const [enteredAmount, setEnteredAmount] = useState("");
+  const [enteredDate, setEnteredDate] = useState("");
 
   const titleChangeHandler = (event) => {
-    // React scedule states, it doesn't update instantly.
-    // If you scedule a lot of state updates, you could be depended on outdated/Incorrect state snapshot if you use this approach
-    // setUserInput({
-    //   ...userInput,
-    //   enteredTitle: event.target.value,
-    // });
-
-    //instaed use, it wil guaranteed, that the state snapshot will gives you, always latest snapshot of state
-    //keeping all states updates in mind
-    setUserInput((prevState) => {
-      return { ...prevState, enteredTitle: event.target.value };
-    });
+    setEnteredTitle(event.target.value);
   };
 
   const amountChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
-    });
+    setEnteredAmount(event.target.value);
   };
 
   const dateChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
-    });
+    setEnteredDate(event.target.value);
+  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+    console.log(expenseData);
+
+    setEnteredAmount("");
+    setEnteredDate("");
+    setEnteredTitle("");
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
           <input
             type="text"
             onChange={titleChangeHandler}
-            value={userInput.enteredTitle}
+            value={enteredTitle} // two way binding
           />
         </div>
         <div className="new-expense__control">
@@ -56,7 +52,7 @@ const ExpeseForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
-            value={userInput.enteredAmount}
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -66,7 +62,7 @@ const ExpeseForm = () => {
             min="2019-01-01"
             max="2023-12-31"
             onChange={dateChangeHandler}
-            value={userInput.enteredDate}
+            value={enteredDate}
           />
         </div>
       </div>
@@ -78,21 +74,39 @@ const ExpeseForm = () => {
   );
 };
 
-//Handle multiple state
+//using one state approach
+/*const [userInput, setUserInput] = useState({
+  enteredTitle: "",
+  enteredAmount: "",
+  enteredDate: "",
+});
 
-// const [enteredTitle, setEnteredTitle] = useState("");
-// const [enteredAmount, setEnteredAmount] = useState("");
-// const [enteredDate, setEnteredDate] = useState("");
+const titleChangeHandler = (event) => {
+  // React scedule states, it doesn't update instantly.
+  // If you scedule a lot of state updates, you could be depended on outdated/Incorrect state snapshot if you use this approach
+  // setUserInput({
+  //   ...userInput,
+  //   enteredTitle: event.target.value,
+  // });
 
-// const titleChangeHandler = (event) => {
-//   setEnteredTitle(event.target.value);
-// };
+  //instaed use, it wil guaranteed, that the state snapshot will gives you, always latest snapshot of state
+  //keeping all states updates in mind
+  setUserInput((prevState) => {
+    return { ...prevState, enteredTitle: event.target.value };
+  });
+};
 
-// const amountChangeHandler = (event) => {
-//   setEnteredAmount(event.target.value);
-// };
+const amountChangeHandler = (event) => {
+  setUserInput({
+    ...userInput,
+    enteredAmount: event.target.value,
+  });
+};
 
-// const dateChangeHandler = (event) => {
-//   setEnteredDate(event.target.value);
-// };
+const dateChangeHandler = (event) => {
+  setUserInput({
+    ...userInput,
+    enteredDate: event.target.value,
+  });
+}; */
 export default ExpeseForm;
