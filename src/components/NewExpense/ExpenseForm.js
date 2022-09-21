@@ -10,9 +10,17 @@ const ExpeseForm = () => {
   });
 
   const titleChangeHandler = (event) => {
-    setUserInput({
-      ...userInput,
-      enteredTitle: event.target.value,
+    // React scedule states, it doesn't update instantly.
+    // If you scedule a lot of state updates, you could be depended on outdated/Incorrect state snapshot if you use this approach
+    // setUserInput({
+    //   ...userInput,
+    //   enteredTitle: event.target.value,
+    // });
+
+    //instaed use, it wil guaranteed, that the state snapshot will gives you, always latest snapshot of state
+    //keeping all states updates in mind
+    setUserInput((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
     });
   };
 
