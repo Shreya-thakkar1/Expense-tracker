@@ -1,22 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpeseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  //using one state approach
+  const [userInput, setUserInput] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredDate: "",
+  });
 
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredTitle: event.target.value,
+    });
   };
 
   const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredAmount: event.target.value,
+    });
   };
 
   const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+    setUserInput({
+      ...userInput,
+      enteredDate: event.target.value,
+    });
   };
+
   return (
     <form>
       <div className="new-expense__controls">
@@ -25,7 +38,7 @@ const ExpeseForm = () => {
           <input
             type="text"
             onChange={titleChangeHandler}
-            value={enteredTitle}
+            value={userInput.enteredTitle}
           />
         </div>
         <div className="new-expense__control">
@@ -35,7 +48,7 @@ const ExpeseForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
-            value={enteredAmount}
+            value={userInput.enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -45,7 +58,7 @@ const ExpeseForm = () => {
             min="2019-01-01"
             max="2023-12-31"
             onChange={dateChangeHandler}
-            value={enteredDate}
+            value={userInput.enteredDate}
           />
         </div>
       </div>
@@ -57,4 +70,21 @@ const ExpeseForm = () => {
   );
 };
 
+//Handle multiple state
+
+// const [enteredTitle, setEnteredTitle] = useState("");
+// const [enteredAmount, setEnteredAmount] = useState("");
+// const [enteredDate, setEnteredDate] = useState("");
+
+// const titleChangeHandler = (event) => {
+//   setEnteredTitle(event.target.value);
+// };
+
+// const amountChangeHandler = (event) => {
+//   setEnteredAmount(event.target.value);
+// };
+
+// const dateChangeHandler = (event) => {
+//   setEnteredDate(event.target.value);
+// };
 export default ExpeseForm;
