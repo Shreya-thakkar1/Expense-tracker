@@ -12,7 +12,13 @@ function App() {
       id: 2,
       title: "PPF",
       amount: "100",
-      date: new Date(2022, 3, 27),
+      date: new Date(2021, 3, 27),
+    },
+    {
+      id: 3,
+      title: "Mediclaim",
+      amount: "200",
+      date: new Date(2020, 3, 27),
     },
     {
       id: 3,
