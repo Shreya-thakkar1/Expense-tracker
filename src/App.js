@@ -7,7 +7,7 @@ const DUMMY_EXPENSES = [
     id: 1,
     title: "Desk",
     amount: "200",
-    date: new Date(2022, 3, 27),
+    date: new Date(2022, 5, 27),
   },
   {
     id: 2,
@@ -19,13 +19,13 @@ const DUMMY_EXPENSES = [
     id: 3,
     title: "Medicine",
     amount: "200",
-    date: new Date(2020, 3, 27),
+    date: new Date(2020, 8, 27),
   },
   {
     id: 4,
     title: "Gold",
     amount: "200",
-    date: new Date(2022, 3, 27),
+    date: new Date(2022, 9, 27),
   },
 ];
 function App() {
